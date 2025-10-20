@@ -53,7 +53,7 @@ docker-compose down
 ## How to get your search URL
 
 1. Go to Daft.ie
-2. Set up your search filters (location, price, bedrooms, etc.). Obviusly filter by Most recent so the pinger isnt over active
+2. Set up your search filters (location, price, bedrooms, etc.). Obviously filter by Most recent so the pinger isnt over active
 3. Copy the full URL from your browser
 4. Paste it as `DAFT_SEARCH_URL` in your `.env` file
 
