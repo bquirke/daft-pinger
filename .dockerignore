@@ -1,0 +1,42 @@
+# Git and IDE files
+.git
+.gitignore
+.idea
+.vscode
+*.iml
+
+# Build and runtime directories
+build/
+target/
+.gradle/
+gradle/wrapper/gradle-wrapper.jar
+
+# Environment and config files
+.env
+.env.*
+!.env.example
+
+# Data and logs (exclude directory but allow initial seeding file)
+data/
+!data/seen-urls.txt
+logs/
+*.log
+
+# Documentation
+README.md
+HELP.md
+*.md
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Docker files (when building)
+docker/
+Dockerfile
+docker-compose*.yml

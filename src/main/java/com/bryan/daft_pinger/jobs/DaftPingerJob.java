@@ -1,9 +1,5 @@
 package com.bryan.daft_pinger.jobs;
 
-import java.io.IOException;
-
-import javax.management.Notification;
-
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.springframework.stereotype.Component;

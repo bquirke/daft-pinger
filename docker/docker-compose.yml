@@ -1,0 +1,57 @@
+services:
+  daft-pinger:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    container_name: daft-pinger
+    restart: unless-stopped
+    
+    # Environment variables - Load from .env file
+    env_file:
+      - ../.env
+    
+    # Mount named volume for persistence (internal to Docker)
+    volumes:
+      - daft-pinger-data:/app/data
+    
+    # Optional: Expose port for health checks/monitoring
+    ports:
+      - "8080:8080"
+    
+    # Network
+    networks:
+      - daft-pinger-network
+    
+    # Optional: Resource limits
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.5'
+        reservations:
+          memory: 256M
+          cpus: '0.25'
+    
+    # Health check - Check if port is listening
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "8080"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    
+    # Optional: Logging configuration
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+# Networks and volumes
+networks:
+  daft-pinger-network:
+    driver: bridge
+
+volumes:
+  daft-pinger-data:
+    driver: local
